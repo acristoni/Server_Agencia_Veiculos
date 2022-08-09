@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
-import { Carro } from './entity/carro.entity';
+import { Carro } from './models/entity/carro.entity';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',

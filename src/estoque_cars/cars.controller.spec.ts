@@ -1,9 +1,17 @@
 import { Test } from '@nestjs/testing';
 import { CarsController } from './cars.controller';
 import { CarsService } from './cars.service';
-import { cadastrarCarroDto, vendaCarroDto } from '../dto/carro.dto';
+import { cadastrarCarroDto, vendaCarroDto } from '../models/dto/carro.dto';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Carro } from '../entity/carro.entity';
+import { Carro } from '../models/entity/carro.entity';
+
+/*jest.mock('../models/validacao/validacaoModelo', () => false);
+jest.mock('../models/validacao/validacaoMarca', () => false);
+jest.mock('../models/validacao/validacaoCor', () => false);
+jest.mock('../models/validacao/validacaoChassi', () => false);
+jest.mock('../models/validacao/validacaoAnoDeFabricacao', () => false);
+jest.mock('../models/validacao/validacaoPlaca', () => false);*/
+
 describe('CarArController', () => {
   let carsController: CarsController;
   let carsService: CarsService;
@@ -42,22 +50,26 @@ describe('CarArController', () => {
     carsController = moduleRef.get<CarsController>(CarsController);
     carsService = moduleRef.get<CarsService>(CarsService);
   });
-
+/*
   describe('endpoint to buy a new car', () => {
     it('should add a new car on DB', async () => {
       const testeCarro: cadastrarCarroDto = {
         modelo: 'TESTE',
         marca: 'TESTE',
         anodefabricação: 1999,
-        placa: 'TESTE',
+        placa: 'VIX-2020',
         cor: 'TESTE',
-        chassi: 'TESTE',
+        chassi: '9BG116GW04C400001',
         valordecompra: 123,
       };
       jest.spyOn(carsService, 'create').mockImplementation();
       await carsController.create(testeCarro);
+      expect(carsController.create(testeCarro)).toBe(
+        'novo carro modelo TESTE cadastrado',
+      );
     });
-  });
+  });*/
+
   describe('endpoint to sell a car', () => {
     it('should update a car on DB', async () => {
       const testeCarro: vendaCarroDto = {

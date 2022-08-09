@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Carro } from '../entity/carro.entity';
-import { cadastrarCarroDto, vendaCarroDto } from '../dto/carro.dto';
-import { carroVendido, carroInterface } from '../interfaces/carro.interface';
+import { Carro } from '../models/entity/carro.entity';
+import { cadastrarCarroDto, vendaCarroDto } from '../models/dto/carro.dto';
+import {
+  carroVendido,
+  carroInterface,
+} from '../models/interfaces/carro.interface';
 
 @Injectable()
 export class CarsService {
